@@ -88,25 +88,44 @@ const App = () => {
         img: 'https://pages.git.generalassemb.ly/modular-curriculum-all-courses/react-state-management-lab/assets/e41f26.png',
       },
     ]
+  );
 
-  )
+  const handleAddFighter = (fighterObj) => {
+    console.log(fighterObj)
+    if (money >= fighterObj.price) {
+      setMoney(money - fighterObj.price);
+      const newTeam = [...team, fighterObj]
+      setTeam(newteam);
+      const newZombieFighters = zombieFighters.filter((fighter) => {
+        return fighter.id !== fighterObj.id;
+      });
+      setZombieFighters(newZombieFighters);
+    } else {
+      console.log("not enough money")
+    }
+
+
+  };
+
   return (
     <>
-      <h1>Hello world!</h1>
+      <h1>Current Money: ${money}</h1>
       <ul>
         {zombieFighters.map((fighter) => {
           const { id, name, price, strength, agility, img } = fighter;
           return (
-            <li>
-        <img src={fighter.img} alt="" />
-        <h3>{name}</h3>
-        <p>${price}</p>
-        <p>Strength: {strength}</p>
-        <p>Agility: {agility}</p>
-        </li>
+            <li key={id}>
+              <img src={fighter.img} alt="" />
+              <h3>{name}</h3>
+              <p>${price}</p>
+              <p>Strength: {strength}</p>
+              <p>Agility: {agility}</p>
+              <button onClick={() => handleAddFighter(fighter)}>
+                Add to Your Team</button>
+            </li>
           );
         })
-      }
+        }
       </ul>
     </>
   );
