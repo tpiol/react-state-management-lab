@@ -109,13 +109,17 @@ const App = () => {
     return total + fighter.strength
   }, 0);
 
+  const totalAgility = team.reduce((total, fighter) => {
+    return total + fighter.agility
+  }, 0);
+
   return (
     <>
       <h2>Current Money: ${money}</h2>
 
       {team.length === 0 && "pick some team members"}
 
-      <h2>Your Team | Team Strength: {totalStength} </h2> 
+      <h2>Your Team | Team Strength: {totalStength} | Team Agility: {totalAgility} </h2> 
       <ul>
         {team.map((fighter) => {
           const { id, name, price, strength, agility, img } = fighter;
