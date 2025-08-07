@@ -146,7 +146,7 @@ const App = () => {
         })}
       </ul>
 
-
+          <h2>Pick a Team Member</h2>
       <ul>
         {zombieFighters.map((fighter) => {
           const { id, name, price, strength, agility, img } = fighter;
